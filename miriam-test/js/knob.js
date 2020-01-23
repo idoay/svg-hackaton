@@ -5,34 +5,58 @@
     var $handle = $('#handle');
     var fromAngle = Number($demo.attr('data-from')) || 0;
     var toAngle = Number($demo.attr('data-to')) || 360;
+    var $svg = $('#svg');
+
+    var boxCenterX = 146; // * $svg.width() / 293;
+    var boxCenterY = 176; // * $svg.height() /331;
 
     /**
-     * handle mouse events
+     * set gauge angle
+     * @param {number} angle in degrees
      */
-    $handle.on('mousedown', function(){
+    var setAngle = function(angle){
 
-        var boxCenter=[$handle.offset().left + $handle.width()/2, $handle.offset().top + $handle.height()/2];
-        boxCenter = [146, 176];
+        var formattedAngle = 'rotate(' + angle + 'deg)';
+        $handle.css({ 'transform': formattedAngle});
+        $handle.css({ "-webkit-transform": formattedAngle });
+        $handle.css({ '-moz-transform': formattedAngle });
 
-        $(document).on('mousemove', function(evt){
+        var origin = boxCenterX + 'px ' + boxCenterY + 'px';
+        $handle.css({ '-webkit-transform-origin': origin });
+        $handle.css({ '-ms-transform-origin': origin });
+        $handle.css({ 'transform-origin': origin });
+    };
 
-            var angle = Math.round(Math.atan2(evt.pageX - boxCenter[0], -(evt.pageY - boxCenter[1]) )*(180/Math.PI));
+    /**
+     * entry point
+     */
+    $(document).ready(function() {
 
-            //if(angle >= fromAngle && angle <= toAngle){
+        // set initial from angle
+        setAngle(fromAngle);
 
-                var formattedAngle = 'rotate(' + angle + 'deg)';
-                $handle.css({ 'transform': formattedAngle});
-                $handle.css({ "-webkit-transform": formattedAngle });
-                $handle.css({ '-moz-transform': formattedAngle });
+        /**
+         * handle mouse events
+         */
+        $handle.on('mousedown', function(){
 
-                $handle.css({ '-webkit-transform-origin': '146px 176px' });
-                $handle.css({ '-ms-transform-origin': '146px 176px' });
-                $handle.css({ 'transform-origin': '146px 176px' });
-            //}
-        });
+            var boxCenter=[$handle.offset().left + $handle.width()/2, $handle.offset().top + $handle.height()/2];
+            boxCenter = [boxCenterX, boxCenterY];
 
-        $(document).on('mouseup', function(){
-            $(document).off('mousemove');
+            $(document).on('mousemove', function(evt){
+
+                var angle = Math.round(Math.atan2(evt.pageX - boxCenter[0], -(evt.pageY - boxCenter[1]) )*(180/Math.PI));
+
+                if(angle >= fromAngle && angle <= toAngle){
+                    setAngle(angle);
+                }
+            });
+
+            $(document).on('mouseup', function(){
+
+                $(document).off('mousemove');
+            });
         });
     });
+
 })();
