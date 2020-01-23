@@ -1,0 +1,44 @@
+<!doctype>
+<html lang="en">
+
+    <head>
+        <title>Test Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    </head>
+
+    <body>
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="271" height="301" viewBox="0 0 271 301">
+
+            <defs>
+                <circle id="thecir" cx="146" cy="176" r="93"/>
+
+                <style>
+                  .cls-1 {
+                    fill: #ffba96;
+                    stroke: #000;
+                    stroke-width: 3px;
+                  }
+                </style>
+           </defs>
+
+          <g id="baseknob">
+              <use xlink:href="#thecir" stroke="#006600" stroke-width="14" fill="none" fill-opacity="0.5" />
+              <circle id="circle" cx="146" cy="176" r="86" fill="black"/>
+              <rect id="handle" x="146" y="176" width="6" height="85" rx="3" ry="3" fill="#fff" />
+          </g>
+        </svg>
+
+        <!-- x / y label-->
+        <p id="demo" data-from="0" data-to="180"></p>
+
+        <!-- libraries -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="../snap/dist/snap.svg-min.js"></script>
+
+        <script type="text/javascript" src="js/knob.js"></script>
+    </body>
+
+</html>
