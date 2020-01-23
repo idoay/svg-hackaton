@@ -40,8 +40,11 @@
          */
         $handle.on('mousedown', function(){
 
-            var boxCenter=[$handle.offset().left + $handle.width()/2, $handle.offset().top + $handle.height()/2];
-            boxCenter = [boxCenterX, boxCenterY];
+            var boxCenter=[
+                $handle.offset().left + $handle.width()/2 + $svg.offset().left,
+                $handle.offset().top + $handle.height()/2 + $svg.offset().top
+            ];
+            boxCenter = [boxCenterX + $svg.offset().left, boxCenterY + $svg.offset().top];
 
             $(document).on('mousemove', function(evt){
 

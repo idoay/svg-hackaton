@@ -1,6 +1,14 @@
 html, body{
     padding: 0;
     margin: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
 }
 
 svg{
@@ -8,11 +16,10 @@ svg{
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-}
+    margin: 100px auto;
 
-/*
-#handle{
-    -webkit-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
-}*/
+    /*
+    -webkit-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    transform: scale(1.5);*/
+}
