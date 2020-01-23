@@ -120,16 +120,55 @@ var angle = 0;
 function onMouseUp(ev) {
   document.removeEventListener("mousemove", onMouseMove);
 
+  //alert("angle:" + angle + "x:" + r*Math.cos(angle) + "y:" + r*Math.sin(angle));
+  var angle = getNewAngle(ev)
+  var newCor = calculateOriginalCoordinates(angle);
+  sendNewCordinatesToPvm(newCor.newX, newCor.newY);
+}
+
+function getNewAngle(ev)
+{
+	const mycircle = document.getElementById("thecir");
+	var rect = mycircle.getBoundingClientRect();
+	var centerX = (rect.left + rect.right) / 2 ;
+	var centerY = (rect.top + rect.bottom) / 2;
+	var angle = calculateAngleInDegres(centerX,centerY, ev.clientX, ev.clientY);
+	return angle;
+}
+
+function calculateAngleInDegres(newCenterX, newCenterY, mouseUpOnPointerX, mouseUpOnPointerY)
+{
+	return 180*Math.atan((newCenterY - mouseUpOnPointerY)/(newCenterX - mouseUpOnPointerX))/Math.PI;
+}
+
+function calculateOriginalCoordinates(userAngle)
+{
   var cx = document.getElementById("thecir").attributes["cx"].value;
   var cy = document.getElementById("thecir").attributes["cy"].value;
   var r = document.getElementById("thecir").attributes["r"].value;
-  //alert("angle:" + angle + "x:" + r*Math.cos(angle) + "y:" + r*Math.sin(angle));
-  simulateClick(239, 178);
-  //document.click(Math.abs(cx + r*Math.cos(angle)), Math.abs(cy + r*Math.sin(angle))).click();
+  var newX = +cx + r*Math.cos(userAngle);
+  var newY = +cy + r*Math.sin(userAngle);
+  const newCor = {newX, newY};
+  return newCor
+}
+
+function sendNewCordinatesToPvm(newX, newY)
+{
+	var sendMouseDownEvent = {
+        "action": "mousedown",
+        "id": "knob",
+        "clientX": newX,
+        "clientY": newY
+    }
+         
+    browserToPVM(JSON.stringify(sendMouseDownEvent));
 }
 
 function simulateClick(x, y) {
-    jQuery(document.elementFromPoint(x, y)).click();
+	var ele = document.elementFromPoint(x, y);
+    alert(ele);
+    alert(JSON.stringify(ele));
+    //jQuery(document.elementFromPoint(x, y)).click();
 }
 
 function onMouseMove(event) {

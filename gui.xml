@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<GUITree version="4">
+    <Flag_List Affiliation="arti"> <NoImages/> </Flag_List>
+    <Flag_List>
+        <NoSelectRect/>
+        <NoAutomatableImages/>
+    </Flag_List>
+    <ViewRect_List>
+        <Rect bottom="331" left="0" right="293" top="0"/>
+    </ViewRect_List>
+    <Pict_List>
+        <Image ResID="14010" Type="About"/>
+        <Image ResID="14000" Type="Base"/>
+        <Image ResID="30000" SubComp="OKDM,OKDS" Type="Icon"/>
+    </Pict_List>
+
+    <ControlOrder_List>
+        <ControlOrder>
+            <Control Name="OKDriver"/>
+            <Control Name="VU L"/>
+        </ControlOrder>
+    </ControlOrder_List>
+    <ToolBarControl_List>
+        <ToolButton type="Switch">
+            <ImageList>
+                <Selection>
+                    <Image ResID="398" Type="Idle"/>
+                    <Image ResID="399" Type="Selected"/>
+                </Selection>
+            </ImageList>
+            <ControlRect height="15" left="28" width="153" top="2"/>
+            <TextString>Setup A</TextString>
+            <TextString>Setup B</TextString>
+            <TextWin Type="Value">
+                <Font>
+                    <Color blue="180" green="180" red="180"/>
+                </Font>
+            </TextWin>
+        </ToolButton>
+        <ToolButton type="Load">
+            <ImageList>
+                <Selection>
+                    <Image ResID="412" Type="Idle"/>
+                    <Image ResID="413" Type="Selected"/>
+                </Selection>
+            </ImageList>
+            <ControlRect height="15" left="183" width="44" top="2"/>
+            <TextString>Load</TextString>
+            <TextWin Type="Value">
+                <Font>
+                    <Color blue="180" green="180" red="180"/>
+                </Font>
+            </TextWin>
+        </ToolButton>
+        <ToolButton type="Save">
+            <ImageList>
+                <Selection>
+                    <Image ResID="412" Type="Idle"/>
+                    <Image ResID="413" Type="Selected"/>
+                </Selection>
+            </ImageList>
+            <ControlRect height="15" left="229" width="44" top="2"/>
+            <TextString>Save</TextString>
+            <TextWin Type="Value">
+                <Font>
+                    <Color blue="180" green="180" red="180"/>
+                </Font>
+            </TextWin>
+        </ToolButton>
+        <ToolButton type="About">
+            <ImageList>
+                <Selection>
+                    <Image ResID="418" Type="Idle"/>
+                    <Image ResID="419" Type="Selected"/>
+                </Selection>
+            </ImageList>
+            <ControlRect left="6" top="2" width="16" height="15"/>
+        </ToolButton>
+        <ToolButton type="Help">
+            <ImageList>
+                <Selection>
+                    <Image ResID="416" Type="Idle"/>
+                    <Image ResID="417" Type="Selected"/>
+                </Selection>
+            </ImageList>
+            <ControlRect left="275" top="2" width="15" height="15"/>
+        </ToolButton>
+    </ToolBarControl_List>
+    <Control_List>
+
+
+        <cCONTROLLER Name="VU L">
+            <Class Type="RotationKnob">
+                <Image ResID="5000" SequenceSteps="26"/>
+            </Class>
+            <MaxSelection> 1 </MaxSelection>
+            <Direction> vertical </Direction>
+            <ControlRect height="169" left="62" top="92" width="169"/>
+            <ParameterList>
+                <Param Name="PARAM_OUT_VU_L" UpdateGraphics="true">
+                    <RegisterType> MouseDown </RegisterType>
+                    <RegisterType>OptionReset</RegisterType>
+                </Param>
+            </ParameterList>
+        </cCONTROLLER>
+
+        <!--cCONTROLLER Name="VU L Clip">
+      <Class Type="Toggle"/>
+      <MaxSelection>3</MaxSelection>
+      <Direction>toggle</Direction>
+      <Flags>
+        <NoMultipleSelection/>
+      </Flags>
+      <ControlRect height="17" left="213" width="19" top="90"/>
+      <ParameterList>
+        <Param Name="PARAM_OUT_VU_L" UpdateGraphics="true">
+          <RegisterType> MouseDown </RegisterType>
+          <BitmapWin Type="AlgBitmap">
+            <ImageList>
+              <Image ResID="950"/>
+              <Image ResID="951"/>
+            </ImageList>
+          </BitmapWin>
+        </Param>
+      </ParameterList>
+    </cCONTROLLER-->
+
+        <cCONTROLLER Name="OKDriver">
+            <Class Type="RotationKnob">
+                <Image ResID="10100" SequenceSteps="71"/>
+                <AngleRange maxAngle="330" minAngle="30"/>
+                <KnobCenter x="100" y="100"/>
+            </Class>
+            <MaxSelection>3</MaxSelection>
+            <Direction>vertical</Direction>
+            <ControlRect height="225" left="46" width="225" top="76"/>
+            <Flags>
+                <Automatable/>
+                <ReciveTextEntery/>
+                <IgnoreMouseOnTextWin/>
+                <JumpToScaleMarks/>
+            </Flags>
+            <ImageList>
+                <Image ResID="10199" Type="AlphaSelection"/>
+                <Image ResID="10172" Type="ScaleMarksMask"/>
+                <Selection>
+                    <Image ResID="10175" Type="Idle"/>
+                </Selection>
+            </ImageList>
+            <ParameterList>
+                <Param Name="PARAM_ONE_KNOB_OKDriver" UpdateGraphics="true">
+                    <RegisterType>MouseVertical</RegisterType>
+                    <RegisterType> MouseDown </RegisterType>
+                    <RegisterType>OptionReset</RegisterType>
+                    <TextWin Type="Value">
+                        <Font>
+                            <Name>Helvetica</Name>
+                            <Color blue="255" green="255" red="255"/>
+                        </Font>
+                        <PositionRect height="16" left="208" width="36" top="291"/>
+                        <ShowOnHover/>
+                        <Image ResID="100" Type="EraseBitmap"/>
+                    </TextWin>
+                </Param>
+            </ParameterList>
+        </cCONTROLLER>
+
+
+    </Control_List>
+</GUITree>
+
+
