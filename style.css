@@ -8,6 +8,19 @@
 	left: 8px;
 }
 
+.svg-knob{
+	min-width:271px;
+	min-height:301px;
+	max-height: 100vh;
+}
+
 .inner-circle{
 	fill: black;
+	box-sizing: border-box;
+}
+
+#demo2 {
+	position: absolute;
+	display: block;
+	height: 50px;
 }
