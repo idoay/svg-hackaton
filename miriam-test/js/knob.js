@@ -24,6 +24,10 @@
                 $handle.css({ 'transform': formattedAngle});
                 $handle.css({ "-webkit-transform": formattedAngle });
                 $handle.css({ '-moz-transform': formattedAngle });
+
+                $handle.css({ '-webkit-transform-origin': '146px 176px' });
+                $handle.css({ '-ms-transform-origin': '146px 176px' });
+                $handle.css({ 'transform-origin': '146px 176px' });
             //}
         });
 
