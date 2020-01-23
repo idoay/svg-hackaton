@@ -3,12 +3,20 @@
 
     var $demo = $('#demo');
     var $handle = $('#handle');
+
     var fromAngle = Number($demo.attr('data-from')) || 0;
     var toAngle = Number($demo.attr('data-to')) || 360;
-    var $svg = $('#svg');
 
-    var boxCenterX = 146; // * $svg.width() / 293;
-    var boxCenterY = 176; // * $svg.height() /331;
+    var $svg = $('#svg');
+    var svgWidth = Number($svg.attr('width')) || 0;
+    var svgHeight = Number($svg.attr('height')) || 0;
+    var svgLeft = $svg.offset().left;
+    var svgTop = $svg.offset().top;
+
+    var boxCenterX = 146;
+    var boxCenterY = 176;
+    var initialWidth = 293;
+    var initialHeight = 331;
 
     /**
      * set gauge angle
@@ -40,15 +48,12 @@
          */
         $handle.on('mousedown', function(){
 
-            var boxCenter=[
-                $handle.offset().left + $handle.width()/2 + $svg.offset().left,
-                $handle.offset().top + $handle.height()/2 + $svg.offset().top
-            ];
-            boxCenter = [boxCenterX + $svg.offset().left, boxCenterY + $svg.offset().top];
-
             $(document).on('mousemove', function(evt){
 
-                var angle = Math.round(Math.atan2(evt.pageX - boxCenter[0], -(evt.pageY - boxCenter[1]) )*(180/Math.PI));
+                var centerX = svgWidth * boxCenterX / initialWidth + svgLeft;
+                var centerY = svgHeight * boxCenterY / initialHeight + svgTop;
+
+                var angle = Math.round(Math.atan2(evt.pageX - centerX, -(evt.pageY - centerY) )*(180/Math.PI));
 
                 if(angle >= fromAngle && angle <= toAngle){
                     setAngle(angle);
