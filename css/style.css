@@ -1,0 +1,24 @@
+html, body{
+    padding: 0;
+    margin: 0;
+}
+
+svg{
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    max-height: 100vh;
+}
+
+
+#baseknob {
+	position: relative;
+}
+
+#pointer {
+	position: absolute;
+	top: -6;
+	left: 8px;
+}
+

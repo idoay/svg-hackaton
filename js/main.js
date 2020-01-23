@@ -1,9 +1,16 @@
+'use-strict'
+
 var platform = navigator.platform;
 var path_delimiter;
 var browserToPVM;
 
 
-(function () {
+function init () {
+    initializer();
+}
+
+
+function initializer() {
     console.log('Initializer() ON');
    
     String.prototype.format = function (){
@@ -19,37 +26,12 @@ var browserToPVM;
     browserToPVM = function (valString) {
     return window.external.BrowserToPVM(valString);
     }
-})();
+};
 
-
-//var knob = Snap("#baseknob"); 
-//Snap.load("baseknob.svg", onSVGbaseknobLoaded );
-//var knobg = knob.group();
-//knob.click(clickCallback2);
-
-/*					   
-function onSVGbaseknobLoaded( data )
-{
-	knobg.append( data );
-	var bbox = knobg.getBBox();
-	var str = 'r{0},{1},{2}'.format(0, bbox.cx, bbox.cy);
-	knob.transform(str);
-}*/
-
-var clickCallback2 = function() {
-    
-    //alert("clickCallback2");
-    //var bbox = knobg.getBBox();
-	//var e = event.target;
-	//var dim = e.getBoundingClientRect();
-	
-	var sendMouseDownEvent = {
+const clickCallback2 = function() {	
+	const sendMouseDownEvent = {
         "action": "mousedown",
         "id": "knob",
-        //"bbox.x": bbox.cx,
-        //"bbox.y": bbox.cy,
-        //"boundingClientRect.left": dim.left,
-        //"boundingClientRect.top": dim.top,
         "clientX": event.clientX,
         "clientY": event.clientY
     }
@@ -57,45 +39,6 @@ var clickCallback2 = function() {
     browserToPVM(JSON.stringify(sendMouseDownEvent));
 }
 
-/*
-var move = 0;
-var pointer = Snap("#pointer");
-Snap.load("pointer.svg", onSVGpointerLoaded );
-var pointerg = pointer.group();
-
-function onSVGpointerLoaded( data )
-{
-	pointerg.append( data );
-	var bbox = pointerg.getBBox();
-	var str = 'r{0},{1},{2}'.format(0, bbox.cx, bbox.cy);
-	pointerg.transform(str);
-	pointerg.click(clickCallback);
-}
-
-var clickCallback = function(event) {
-
-	var bbox = pointerg.getBBox();
-	move = (move + 45) % 360;
-	var str = 'r{0},{1},{2}'.format(move, bbox.cx, bbox.cy);
-	this.attr({transform: str });
-	
-	var e = event.target;
-	var dim = e.getBoundingClientRect();
-	
-	var sendMouseDownEvent = {
-        "action": "mousedown",
-        "id": "pointer",
-        "bbox.x": bbox.cx,
-        "bbox.y": bbox.cy,
-        "boundingClientRect.left": dim.left,
-        "boundingClientRect.top": dim.top,
-        "clientX": event.clientX,
-        "clientY": event.clientY
-    }
-         
-    browserToPVM(JSON.stringify(sendMouseDownEvent));  
-};
-*/
 
 var pointerEle = null;
 
