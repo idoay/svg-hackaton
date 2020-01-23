@@ -1,0 +1,13 @@
+#baseknob {
+	position: relative;
+}
+
+#pointer {
+	position: absolute;
+	top: -6;
+	left: 8px;
+}
+
+.inner-circle{
+	fill: black;
+}

@@ -1,0 +1,43 @@
+<html>
+<head>
+<script>
+function showCoords(event) {
+  var x = event.screenX;
+  var y = event.screenY;
+  var cx = event.clientX;
+  var cy = event.clientY;
+  
+  var coords = "X coords: " + x + ", Y coords: " + y + "cx:" + cx + "cy:" + cy;
+  document.getElementById("demo").innerHTML = coords;
+}
+</script>
+<script src="snap/dist/snap.svg-min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body onmousemove="showCoords(event)" style="margin:0;">
+<svg xmlns="http://www.w3.org/2000/svg" width="271" height="301" viewBox="0 0 271 301">
+  <!-- <defs> -->
+   <circle id="thecir" cx="146" cy="176" r="93"/>
+   
+    <!-- <style>
+      .cls-1 {
+        fill: #ffba96;
+        stroke: #000;
+        stroke-width: 3px;
+      }
+    </style> -->
+  <!-- </defs> -->
+  <g id="baseknob">
+  <use xlink:href="#thecir" stroke="#006600" stroke-width="14"  />
+  <!-- <use xlink:href="#thecir" stroke="#006600" stroke-width="14" fill="none" fill-opacity="0.5" /> -->
+  <circle id="thecir" cx="146" cy="176" r="86" fill="black" class="inner-circle"/>
+  <rect id="Rounded_Rectangle_1_copy" data-name="Rounded Rectangle 1 copy" x="146" y="176" width="6" height="85" rx="3" ry="3" fill="white"/>
+  </g>
+</svg>
+
+<script type="text/javascript" src="knob.js"></script>
+
+<p id="demo"></p>
+</body>
+</html>
